@@ -136,7 +136,7 @@ function renderBooks() {
                  onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2YzZjNmMyIvPjx0ZXh0IHg9IjUwIiB5PSI3MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lm77moIfvvIE8L3RleHQ+PC9zdmc+'">
             <div class="book-info">
                 <h3 class="book-title">${book.title}</h3>
-                <p class="book-author">作者：${book.author}</p>
+                <p class="book-author">Author：${book.author}</p>
                 <span class="book-category">${book.category}</span>
                 <p class="book-description">${book.description}</p>
                 <div class="vote-section">

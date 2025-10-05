@@ -2,13 +2,17 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;  // 修改：支持环境变量端口
 
 // 中间件
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client')));
 
-// 完整的10本书数据
+// 只在本地开发时服务静态文件，Vercel会自动处理静态文件
+if (!process.env.VERCEL) {
+    app.use(express.static(path.join(__dirname, '../client')));
+}
+
+// 完整的10本书数据（保持不变）
 const books = [
     {
         id: '1',
@@ -102,7 +106,7 @@ const books = [
     }
 ];
 
-// API路由
+// API路由（保持不变）
 app.get('/api/books', (req, res) => {
     console.log('📚 Return book list, quantity:', books.length);
     res.json({
@@ -149,19 +153,32 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// 提供前端页面
+// 提供前端页面（修改：只在非Vercel环境服务静态文件）
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/index.html'));
+    if (!process.env.VERCEL) {
+        res.sendFile(path.join(__dirname, '../client/index.html'));
+    } else {
+        // 在Vercel环境，静态文件由Vercel自动处理
+        res.json({
+            message: 'Book Recommendation Platform API is running',
+            frontend: 'Static files are served by Vercel'
+        });
+    }
 });
 
-// 启动服务器
-app.listen(PORT, () => {
-    console.log('==================================');
-    console.log('🚀 Server startup successful!');
-    console.log(`📍 port: ${PORT}`);
-    console.log(`🌐 Visit: http://localhost:${PORT}`);
-    console.log(`📚 Number of books: ${books.length} `);
-    console.log('==================================');
-});
+// 启动服务器（只在非Vercel环境监听端口）
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log('==================================');
+        console.log('🚀 Server startup successful!');
+        console.log(`📍 port: ${PORT}`);
+        console.log(`🌐 Visit: http://localhost:${PORT}`);
+        console.log(`📚 Number of books: ${books.length} `);
+        console.log('==================================');
+    });
+}
 
 console.log('✅ server.js File loading completed');
+
+// 导出app供Vercel使用
+module.exports = app;
