@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 头部样式 */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* 主内容区 */
+.main {
+    padding: 2rem 0;
+    min-height: 60vh;
+}
+
+.section {
+    background: white;
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    color: #2d3748;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #667eea;
+}
+
+/* 排行榜样式 */
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: transform 0.2s ease;
+}
+
+.ranking-item:hover {
+    transform: translateX(5px);
+    background: #e9ecef;
+}
+
+.rank {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-right: 1.2rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* 书籍网格样式 */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.book-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.book-cover {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    float: left;
+    margin-right: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.book-info {
+    overflow: hidden;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 0.4rem;
+}
+
+.book-author {
+    color: #718096;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.book-category {
+    display: inline-block;
+    background: #edf2f7;
+    color: #4a5568;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.book-description {
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    clear: both;
+    margin-bottom: 1rem;
+}
+
+/* 投票区域 */
+.vote-section {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.vote-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.vote-btn:hover {
+    background: #5a67d8;
+    transform: translateY(-1px);
+}
+
+.vote-count {
+    margin-top: 0.6rem;
+    font-weight: bold;
+    color: #4a5568;
+    font-size: 1rem;
+}
+
+/* 底部样式 */
+.footer {
+    background: #2d3748;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer p {
+    margin: 0.3rem 0;
+}
+
+/* 加载状态 */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+    font-style: italic;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .book-cover {
+        float: none;
+        display: block;
+        margin: 0 auto 1rem;
+    }
+    
+    .header {
+        padding: 2rem 0;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .section {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+}
